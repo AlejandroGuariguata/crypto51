@@ -7,13 +7,13 @@ class WTM:
         self._wtm = {}
 
         print("Getting whattomine data")
-        wtm = requests.get('https://whattomine.com/calculators.json').json()
+        wtm = requests.get('https://whattomine.com/coins/101.json').json()
 
-        print("Filter out lagging coins from whattomine data")
+        #print("Filter out lagging coins from whattomine data")
         # print(json.dumps(wtm, indent=2))
 
         # Filter out 'lagging'
-        for coin in wtm["coins"]:
+        """for coin in wtm["coins"]:
             print("Grabbing more data for "+coin)
             if wtm["coins"][coin]['lagging'] == False and wtm["coins"][coin]['status'] == "Active":
                 print("-> Coin isn't lagging and is active")
@@ -36,7 +36,17 @@ class WTM:
                     "hashrate":wtmcoin["nethash"],
                     "block_time":float(wtmcoin['block_time'])
                 }
-                time.sleep(1.2)
+                time.sleep(1.2)"""
+        self._wtm[wtm['tag']] = {
+                    "id":wtm["id"],
+                    "name":wtm["name"],
+                    "symbol":wtm["tag"],
+                    "algorithm":wtm["algorithm"],
+                    "marketcap":float(wtm["market_cap"].replace("$", '').replace(',','')),
+                    "exchange_rate":wtm["exchange_rate"],
+                    "hashrate":wtm["nethash"],
+                    "block_time":float(wtm['block_time'])
+        }
 
     def get_coin_data(self):
         return self._wtm
