@@ -8,7 +8,7 @@ on a static hosting service like Google Cloud Buckets, or AWS S3.
 Run the following to generate updated html files in the dist/ directory:
 
 ```
-pipenv --python 3.6 shell
+pipenv --python 3.8 shell
 pipenv install
 python app.py
 python render.py
@@ -18,7 +18,7 @@ Alternatively you can run the following to generate updated html files + copy
 them to Google Cloud
 
 ```
-pipenv --python 3.6 shell
+pipenv --python 3.8 shell
 pipenv install
 ./update.sh
 ```
@@ -26,4 +26,4 @@ pipenv install
 # Dependencies
 
 * pipenv
-* python 3.6
+* python 3.8
