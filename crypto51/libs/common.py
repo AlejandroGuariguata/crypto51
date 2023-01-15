@@ -1,17 +1,17 @@
 def get_pretty_hash_rate(hash_rate):
     """Convert the given hash rate to a pretty value."""
     if hash_rate > (1000.0 ** 5):
-        return '{:,.0f} PH/s'.format(hash_rate / (1000.0 ** 5))
+        return '{:,.2f} PH/s'.format(hash_rate / (1000.0 ** 5))
     elif hash_rate > (1000.0 ** 4):
-        return '{:,.0f} TH/s'.format(hash_rate / (1000.0 ** 4))
+        return '{:,.2f} TH/s'.format(hash_rate / (1000.0 ** 4))
     elif hash_rate > (1000.0 ** 3):
-        return '{:,.0f} GH/s'.format(hash_rate / (1000.0 ** 3))
+        return '{:,.2f} GH/s'.format(hash_rate / (1000.0 ** 3))
     elif hash_rate > (1000.0 ** 2):
-        return '{:,.0f} MH/s'.format(hash_rate / (1000.0 ** 2))
+        return '{:,.2f} MH/s'.format(hash_rate / (1000.0 ** 2))
     elif hash_rate > (1000.0 ** 1):
-        return '{:,.0f} KH/s'.format(hash_rate / (1000.0 ** 1))
+        return '{:,.2f} KH/s'.format(hash_rate / (1000.0 ** 1))
     else:
-        return '{:,.0f} H/s'.format(hash_rate / (1000.0 ** 0))
+        return '{:,.2f} H/s'.format(hash_rate / (1000.0 ** 0))
 
 
 def get_pretty_money(value):
