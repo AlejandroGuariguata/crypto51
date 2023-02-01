@@ -22,16 +22,36 @@
     
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center text-light">
       <h1 class="display-4">{{ coin.name }} ({{ coin.symbol}})</h1>
-      <p class="lead">Cost for a 51% attack</p>
     </div>
 
-    <div class="container">
+     <div class="mx-auto text-center text-light">
+      <h5 class=""> Is there currently more than 50% of network hashrate available for rent to launch an attack? </h5>
+      {% if coin.network_vs_rentable_ratio < 0.5 %}
+        <h5>
+          <b>
+            No
+          </b>
+        </h5>
+      {% else %}
+        <h5>
+          <b>
+            Yes
+          </b>
+        </h5>        
+      {% endif %}
+    </div>
+
+    <div class="container pt-md-4">
       <div class="row text-light">
         <div class="col">
         </div>    
         <div class="col-8">
           <table class="table">
             <tbody>
+              <tr>
+                <td>Nicehash percentage of network</td>
+                <td>{{ '{:,.1f}%'.format(coin.network_vs_rentable_ratio * 100.0) }}</td>
+              </tr>
               <tr>
                 <td>Mining algorithm</td>
                 <td>{{ coin.algorithm }}</td>
@@ -43,10 +63,6 @@
               <tr>
                 <td>Nicehash capacity</td>
                 <td>{{ coin.rentable_capacity_pretty }}</td>
-              </tr>
-              <tr>
-                <td>Nicehash percentage of network</td>
-                <td>{{ '{:,.0f}%'.format(coin.network_vs_rentable_ratio * 100.0) }}</td>
               </tr>
               <tr>
                 <td>Estimated cost of 1 hour 51% attack</td>
@@ -82,7 +98,7 @@
         <footer class="text-light d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <p class="col text-left">
               <a>
-              About
+              
               </a>
             </p>
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
