@@ -8,6 +8,7 @@ requests-html = "*"
 requests = "*"
 jinja2 = "*"
 pytz = "*"
+boto3 = "*"
 
 [dev-packages]
 pytest = "*"
