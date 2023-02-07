@@ -1,6 +1,7 @@
 import datetime
 import json
 import requests
+import sys
 
 import config
 from apis.wtm import WTM
@@ -77,3 +78,5 @@ if __name__ == '__main__':
 
     with open('dist/coins.json', 'w') as f:
         json.dump(results, f)
+
+    sys.exit(0)

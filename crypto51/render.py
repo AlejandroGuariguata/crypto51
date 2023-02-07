@@ -1,6 +1,7 @@
 import datetime
 import json
 import pytz
+import sys
 from jinja2 import Template
 
 
@@ -32,3 +33,4 @@ def render(api_data):
 if __name__ == '__main__':
     with open('dist/coins.json', 'r') as f:
         render(json.load(f))
+    sys.exit(0)

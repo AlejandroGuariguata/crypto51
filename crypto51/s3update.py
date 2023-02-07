@@ -2,6 +2,7 @@
 #https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-uploading-files.html
 import logging
 import boto3
+import sys
 from botocore.exceptions import ClientError
 import os
 
@@ -29,4 +30,5 @@ def upload_file(file_name, bucket, object_name=None):
     return True
 
 if __name__ == '__main__':
-    upload_file("dist/coins/XRM.html","51monero.com")
+    upload_file("dist/coins/XMR.html","51monero.com")
+    sys.exit(0)
