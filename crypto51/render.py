@@ -25,9 +25,11 @@ def render(api_data):
 
     with open('src/coin.jinja', 'r') as f:
         template = Template(f.read())
+        tz = pytz.timezone('UTC')
+        now = datetime.datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
         for coin in api_data['coins']:
             with open('dist/coins/{}.html'.format(coin['symbol']), 'w') as g:
-                g.write(template.render(coin=coin))
+                g.write(template.render(coin=coin,last_updated=now))
 
 
 if __name__ == '__main__':
