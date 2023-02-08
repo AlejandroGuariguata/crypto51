@@ -23,12 +23,12 @@ def upload_file(file_name, bucket, object_name=None):
     # Upload the file
     s3_client = boto3.client('s3')
     try:
-        response = s3_client.upload_file(file_name, bucket, object_name)
+        response = s3_client.upload_file(file_name, bucket, object_name, ExtraArgs={'ContentType': "text/html"})
     except ClientError as e:
         logging.error(e)
         return False
     return True
 
 if __name__ == '__main__':
-    upload_file("dist/coins/XMR.html","51monero.com")
+    upload_file("dist/coins/XMR.html","51monero.com","XMR.html")
     sys.exit(0)
