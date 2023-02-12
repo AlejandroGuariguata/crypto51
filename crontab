@@ -1,0 +1,4 @@
+# This is an example cron job that will run the update bash script every hour
+# It will log the output of the script to the cron_logs file along with any errors observed
+# Add the below line with crontab -e to enable automatic updates.
+# 0 * * * * /bin/bash ~/crypto51/crypto51/update.sh >> ~/cron_logs 2>&1

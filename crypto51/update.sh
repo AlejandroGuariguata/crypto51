@@ -1,27 +1,19 @@
 #!/bin/bash
 set -e
 
-#this may be returning an error due to the bash script not being inside dist
-python3 app.py
+cd ~/development/crypto51/crypto51
 
-if [ $? != 0 ];
-then
-    echo "app.py exited with a non-zero value"
-fi
-echo "app.py exited successfully"
+now=$(date)
+echo "update.sh running at: $now"
 
-python3 render.py
+for f in app.py render.py s3update.py
+do
+ ~/.local/bin/pipenv run python3 $f
+ if [ $? != 0 ];
+ then
+     echo "$f exited with a non-zero value"
+ fi
+ echo "$f exited successfully"
+done
 
-if [ $? != 0 ];
-then
-    echo "render.py exited with a non-zero value"
-fi
-echo "render.py exited successfully"
-
-python3 s3update.py
-
-if [ $? != 0 ];
-then
-    echo "s3update.py exited with a non-zero value"
-fi
-echo "s3update.py exited successfully"
+echo "update.sh completed"
